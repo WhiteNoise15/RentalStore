@@ -1,0 +1,34 @@
+﻿<div class="panel-body">
+    <div class="row">
+        <div class="list-group  col-sm-6 col-md-10" ng-repeat="movie in moviesToShow">
+            <div class="media">
+                <div style="padding-top:5px" class="pull-left">
+                    <img class="media-object" width="145" height="195" ng-src="{{movie.Image}}" alt="" />
+                    <button style="padding: 6.9px; margin-top: 15px" class="pull-left btn btn-danger" ng-click="remove(movie)">Убрать из корзины</button>
+                </div>
+
+                <div class="media-body">
+                    <h4 class="media-heading">{{movie.Title}}</h4>
+                    Режиссер: <strong>{{movie.Director}}</strong>
+                    <br />
+                    Сценарист: <strong>{{movie.Writer}}</strong>
+                    <br />
+                    Продюсер: <strong>{{movie.Producer}}</strong>
+                    <br />
+                    Описание: <span class="text-muted">{{description | limitTo: 150}}...</span>
+                    <br />
+                    <a class="fancybox-media" ng-href="{{movie.TrailerURI}}">Трейлер <i class="fa fa-video-camera fa-fw"></i></a>
+                </div>
+                <label class="label label-info">{{movie.Genre.Name}}</label>
+                <br />
+                
+            </div>
+            <hr />
+        </div>
+
+        <div class="col-sm-6 col-md-10 form-group">
+                <button type="reset" class="btn btn-default">Отмена</button>
+                <button ng-click="countPrice()" type="submit" class="btn btn-primary">Оформить заказ</button>
+        </div>
+    </div>
+</div>

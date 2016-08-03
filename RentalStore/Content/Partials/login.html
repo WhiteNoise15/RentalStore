@@ -1,0 +1,28 @@
+﻿<div class="col-md-6 col-md-offset-3">
+    <form class="form-horizontal" ng-submit="login()">
+        <fieldset>
+            <legend class="text-center">Авторизация</legend>
+
+            <div class="auth-pading form-group">
+                <label for="login" class="col-lg-2 control-label">Логин</label>
+                <div class="col-lg-10">
+                    <input ng-model="user.Username" class="form-control" id="login" placeholder="Логин" type="text">
+                </div>
+            </div>
+
+            <div class="auth-pading form-group">
+                <label for="inputPassword" class="col-lg-2 control-label">Пароль</label>
+                <div class="col-lg-10">
+                    <input ng-model="user.Password" class="form-control" id="inputPassword" placeholder="Пароль" type="password">
+                </div>
+            </div>
+
+            <div class="auth-pading form-group">
+                <div class="col-lg-10 col-lg-offset-2">
+                    <button type="reset" class="btn btn-default">Отмена</button>
+                    <button type="submit" class="btn btn-primary">Войти</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>

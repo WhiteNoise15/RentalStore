@@ -1,0 +1,125 @@
+﻿<div id="editMovieWrapper">
+<hr>
+<div class="row">
+    <!-- left column -->
+    <div class="col-xs-3">
+        <div class="text-left">
+            <img ng-src={{movie.Image}} class="avatar img-responsive" alt="avatar">
+            <label class="control-label">Ссылка на постер</label>
+
+            <input class="form-control" type="text" ng-model="Image">
+        </div>
+    </div>
+
+    <!-- edit form column -->
+    <div class="col-xs-9 personal-info">
+        <div ng-show="success"  class="alert alert-success alert-dismissable">
+            <i class="fa fa-plus"></i>
+            Фильм <strong>{{movie.Title}}</strong> успешно добавлен.
+        </div>
+
+        <div ng-show="success==false && sent" class="alert alert-warning alert-dismissable">
+            <i class="fa fa-plus"></i>
+            При добавлении фильма <strong>{{movie.Title}}</strong> произошла ошибка.
+        </div>
+
+        <div class="alert alert-info alert-dismissable">
+            <a class="panel-close close" data-dismiss="alert">×</a>
+            <i class="fa fa-plus"></i>
+            Добавление фильма <strong>{{movie.Title}}</strong>. Пожалуйста, заполните все поля.
+        </div>
+
+        <form class="form-horizontal" role="form" novalidate angular-validator name="addMovieForm" angular-validator-submit="addMovie()">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-6 col-sm-4">
+                        <label class="control-label">Название</label>
+                        <input class="form-control" name="title" type="text" ng-model="movie.Title"
+                               validate-on="blur" required required-message="'Пожалуйста, введите название'">
+                    </div>
+
+                    <div class="col-xs-6 col-sm-4 selectContainer">
+                        <label class="control-label">Жанр</label>
+                        <select ng-model="movie.GenreId" class="form-control black" ng-options="option.Id as option.Name for option in genres" required required-message="'Пожалуйста, выберите жанр'"></select>
+                        <input type="hidden" name="GenreId" ng-value="movie.GenreId" />
+                    </div>
+
+                    <div class="col-xs-6 col-sm-4">
+                        <label class="control-label">Количество экземпляров</label>
+                        <div class="input-group number-spinner">
+                            <input required required-message="'Пожалуйста, укажите количество экземпляров'" type="number" min="1" class="form-control text-center" id="inputStocks" ng-model="movie.Count">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <label class="control-label">Режиссер</label>
+                        <input class="form-control" type="text" ng-model="movie.Director" name="director"
+                               validate-on="blur" required required-message="'Пожалуйста, укажите режиссера'">
+                    </div>
+
+                    <div class="col-xs-4">
+                        <label class="control-label">Сценарист</label>
+                        <input class="form-control" type="text" ng-model="movie.Writer" name="writer"
+                               validate-on="blur" required required-message="'Пожалуйста, укажите сценариста'">
+                    </div>
+
+                    <div class="col-xs-4">
+                        <label class="control-label">Продюсер</label>
+                        <input class="form-control" type="text" ng-model="movie.Producer" name="producer"
+                               validate-on="blur" required required-message="'Пожалуйста, укажите продюсера'">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <label class="control-label">Дата выхода</label>
+                        <p class="input-group">
+                            <input type="text" class="form-control" name="dateReleased" uib-datepicker-popup="{{format}}" ng-model="movie.ReleaseDate" is-open="datepicker.opened" datepicker-options="dateOptions" ng-required="true" datepicker-popup="dd-MMMM-yyyy" datepicker-append-to-body="true" close-text="Закрыть" current-text="Сегодня" clear-text="Отчистить"
+                                   validate-on="blur" required required-message="'Необходимо указать дату релиза'" />
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="openDatePicker($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+                        </p>
+                    </div>
+
+                    <div class="col-xs-4">
+                        <label class="control-label">Ссылка на трейлер c Youtube</label>
+                        <input class="form-control" type="text" ng-model="movie.TrailerURL" name="trailerURI"
+                               validate-on="blur" required required-message="'Укажите ссылку на трейлер'" ng-pattern="/^(https?\:\/\/)?(www\.youtube\.com|youtu\.?be)\/.+$/"
+                               invalid-message="'Вы ввели неправильную ссылку'">
+                    </div>
+
+                    <div class="col-xs-4">
+                        <label class="control-label">Цена</label>
+                        <input class="form-control text-center" type="number" min="1" ng-model="movie.Price" name="producer"
+                               validate-on="blur" required required-message="'Пожалуйста, укажите цену'">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Описание</label>
+                <textarea class="form-control" ng-model="movie.Description" name="description" rows="3"
+                          validate-on="blur" required required-message="'Пожалуйста, введите описание фильма'"></textarea>
+            </div>
+
+            <br />
+            <div class="form-group col-xs-4 pull-right">
+                <label class="control-label"></label>
+                <div class="">
+                    <input type="submit" class="btn btn-warning" value="Добавить" />
+                    <span></span>
+                    <a class="btn btn-default" ng-href="/movies">Отмена</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<hr>
+</div>

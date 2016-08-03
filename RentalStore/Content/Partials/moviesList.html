@@ -1,0 +1,50 @@
+﻿<div class="row">
+
+    <div class="panel panel-primary">
+        <div class="panel-heading clearfix">
+            <h4 class="panel-title pull-left" style="padding-top: 8px; font-size: 23px">Список фильмов</h4>
+            <div class="input-group" height ="120px">
+                <input id="inputSearchMovies" type="search" ng-model="filterMovies" class="form-control shortInputSearch" placeholder="Искать, отфильровать список...">
+                <div class="input-group-btn">
+                    <button class="btn btn-primary" ng-click="getData();"><i class="glyphicon glyphicon-search"></i></button>
+                    <button class="btn btn-primary" ng-click="clear();"><i class="glyphicon glyphicon-remove-sign"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <div class="row">
+                <div ng-show="message" class="alert alert-warning alert-dismissable">
+
+                    {{message}}
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="movie in moviesToShow">
+                    <div class="media">
+                        <a class="" href="/movies/{{movie.Id}}" title="Подробнее">
+                            <img class="media-object" height="135" ng-src="{{movie.Image}}" alt="" />
+                        </a>
+
+                        <div class="media-body">
+                            <h4 class="media-heading">{{movie.Title}}</h4>
+                            Режиссер: <strong>{{movie.Director}}</strong>
+                            <br />
+                            Сценарист: <strong>{{movie.Writer}}</strong>
+                            <br />
+                            Продюсер: <strong>{{movie.Producer}}</strong>
+                            <br />
+                            <a class="fancybox-media" ng-href="{{movie.TrailerURL}}">Трейлер <i class="fa fa-video-camera fa-fw"></i></a>
+                        </div>
+                        <label class="label label-info">{{movie.Genre.Name}}</label>
+                        <available-movie is-available="{{movie.Count > 0}}"></available-movie>
+                    </div>
+                    <br /><br />
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div ng-show="totalItems > 1" class="text-center">
+                <ul uib-pagination class="pagination" max-size="5" items-per-page="itemsPerPage" force-ellipses="true" boundary-links="true" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()"></ul>
+            </div>
+        </div>
+    </div>
+</div>

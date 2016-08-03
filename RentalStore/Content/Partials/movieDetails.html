@@ -1,0 +1,34 @@
+﻿<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h4>{{movie.Title}}</h4>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-right" ng-href="/movies/{{movie.Id}}" title="Посмотреть детали">
+                        <img class="media-object" height="280" ng-src="{{movie.Image}}" alt="{{movie.Title}}" />
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">{{movie.Title}}</h4>
+                        Режиссер: <label>{{movie.Director}}</label><br />
+                        Сценарист: <label>{{movie.Writer}}</label><br />
+                        Продюсер: <label>{{movie.Producer}}</label><br />
+                        Описание: <span class="text-muted">{{movie.Description | limitTo: 150}}...</span>
+                        <br />
+                        <label class="label label-info">{{movie.Genre.Name}}</label>
+                        <available-movie is-available="{{movie.Count > 0}}"></available-movie>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer clearfix">
+                <div class="pull-right">
+                    <a ng-href="{{movie.TrailerURL}}" class="btn btn-primary fancybox-media">Посмотреть трейлер  <i style="padding-top: 4.5px" class="fa fa-video-camera pull-right"></i></a>
+                    <a ng-show="movie.Count > 0" ng-click="addToCart()" class="btn btn-default">Добавить в корзину  <i style="padding-top: 4.4px" class="fa fa-plus pull-right"></i></a>
+                    <a ng-show="userId==1" ng-href="/movies/edit/{{movie.Id}}" class="btn btn-default">Редактировать  <i style="padding-top: 3.6px" class="fa fa-pencil-square pull-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

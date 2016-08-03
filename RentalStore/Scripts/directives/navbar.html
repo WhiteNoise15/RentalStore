@@ -1,0 +1,29 @@
+﻿<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Кинопрокат</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+            <ul class="nav navbar-nav">
+                <li ui-sref-active="active" ui-sref="home"><a href="#home">Главная <span class="sr-only">(current)</span></a></li>
+                <li ui-sref-active="active" ui-sref="movies"><a href="#movies">Фильмы</a></li>
+                <li ng-show="Role=='admin'" ui-sref-active="active" ui-sref="addMovie"><a href="#movies/add">Добавить фильм</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+
+                <li ui-sref-active="active" ui-sref="cart"><a href="cart"><i class="fa fa-shopping-cart fa-large"></i>  Корзина</a></li>
+                <li><a href="login"  ng-show="Username != 'null'"><i class="fa fa-sign-out"></i>   Выйти</a></li>
+                <li ui-sref-active="active" ng-show="Username == 'null'" ui-sref="login"><a href="login">Вход</a></li>
+                <li ui-sref-active="active" ui-sref="register"><a href="register"><i class="fa fa-user-plus fa-large"></i>  Регистрация</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>

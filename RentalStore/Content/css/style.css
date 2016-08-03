@@ -1,0 +1,24 @@
+﻿* {
+    font-family: sans-serif;
+}
+
+
+.shortInputSearch {
+    width: 300px !important;
+    float: right !important;
+}
+
+.media-heading  {
+    font-size: 22px;
+    color: #999900;
+}
+
+#editMovieWrapper {
+    background-color: #2780e3;
+    color: white;
+    padding: 20px;
+}
+
+.auth-pading {
+    padding-bottom:10px;
+}
