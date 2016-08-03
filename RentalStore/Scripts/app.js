@@ -56,7 +56,7 @@
                 url: "/cart/user/{id}",
                 templateUrl: "Content/Partials/cart.html",
                 controller: "cartCtrl"
-            })
+            });
           
         $locationProvider.html5Mode(true);
         
