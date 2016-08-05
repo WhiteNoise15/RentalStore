@@ -1,20 +1,12 @@
 ﻿(function (app) {
     "use strict";
     app.controller("registerCtrl", registerCtrl);
-    registerCtrl.$inject = ["$scope", "apiService"];
+    registerCtrl.$inject = ["$scope", "apiService", "$timeout", '$location'];
 
-    function registerCtrl($scope, apiService) {
+    function registerCtrl($scope, apiService, $timeout, $location) {
         $scope.user = {};
-        apiService.get("api/roles", null, ok, end);
+        $scope.user.Role = null;
 
-        function ok(response) {
-            $scope.user.Role = response.data[0];
-            console.log($scope.user);
-        }
-
-        function end(response) {
-            console.log(response);
-        }
 
         $scope.register = function () {
             console.log($scope.user);
@@ -22,11 +14,21 @@
         }
 
         function registred(result) {
-            console.log(result);
+            registerForm.reset();
+            $scope.success = true;
         }
 
         function notRegistred(result) {
-            console.log(result);
+            $scope.error = true;
+            $scope.message = result.data;
+        }
+
+        function removeMessage() {
+            $timeout(function () {
+                $scope.success = null;
+                $scope.message = null;
+                $location.path('/login');
+            }, 3000);
         }
 
     }

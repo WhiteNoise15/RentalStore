@@ -67,8 +67,7 @@ namespace RentalStore.Controllers
             if (!String.IsNullOrEmpty(filter))
             {
                 movies = _rentalStoreContext.Movies
-                    .Where(
-                    m => m.Title.Contains(filter.ToLower().Trim()))
+                    .Where(m => m.Title.Contains(filter.ToLower().Trim()))
                     .OrderBy(m => m.Id)
                     .Skip(page * moviesPerPage)
                     .Take(moviesPerPage)

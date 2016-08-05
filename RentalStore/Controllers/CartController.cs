@@ -41,10 +41,16 @@ namespace RentalStore.Controllers
                 movieToChange.Count -= 1;
             }
                 
-
-            User user = _rentalStoreConext.Users.First(u => u.Id == movie.UserId);
-
-            cart.User = user;
+            try
+            {
+                User user = _rentalStoreConext.Users.First(u => u.Id == movie.UserId);
+                cart.User = user;
+            }
+            catch (Exception e)
+            {
+                response = Request.CreateResponse(HttpStatusCode.NotFound, "При добавлении фильма в корзину возникла ошибка");
+            }
+           
 
             try
             {
@@ -109,19 +115,28 @@ namespace RentalStore.Controllers
                 var carts = _rentalStoreConext.Carts.Where(c => c.User.Id == userId).ToList();
                 var movies = _rentalStoreConext.Movies.ToList();
 
-                var query = from cart in carts
+                var moviesInCart = from cart in carts
                             join movie in movies
                             on cart.Movie.Id equals movie.Id
                             select movie;
 
 
-                int price = 0;
-                foreach (Movie movie in query)
+                double price = 0;
+                foreach (Movie movie in moviesInCart)
                 {
                     price += movie.Price;
+                    movie.Count -= 1;
                 }
 
+                foreach(var userCart in carts)
+                {
+                    _rentalStoreConext.Carts.Remove(userCart);
+                }
+
+                _rentalStoreConext.SaveChanges();
+                               
                 response = Request.CreateResponse(HttpStatusCode.OK, price);
+
             }
             catch (Exception e)
             {
@@ -130,6 +145,7 @@ namespace RentalStore.Controllers
 
             return response;
         }
+        
 
         [HttpPost]
         [Route("{userId:int}/remove")]

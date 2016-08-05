@@ -2,12 +2,16 @@
     "use strict";
 
     app.controller("cartCtrl", cartCtrl);
-    cartCtrl.$inject = ["$scope", "apiService"];
+    cartCtrl.$inject = ["$scope", "apiService", "$window", "$location"];
 
-    function cartCtrl($scope, apiService) {
+    function cartCtrl($scope, apiService, $window, $location) {
         $scope.userId = localStorage.username.valueOf();
         console.log($scope.userId);
         apiService.get("api/cart/all/" + $scope.userId, null, succesLoad, failLoad);
+
+        $scope.close = function () {
+            $location.path("/movies");
+        }
 
         function succesLoad(response) {
             $scope.moviesToShow = response.data;
@@ -30,7 +34,7 @@
         }
 
         function removeFail(response) {
-            console.log(response);
+            alert(response.data);
         }
 
 
@@ -40,12 +44,20 @@
 
 
         function successPrice(response) {
-            console.log(response);
-            alert("Спасибо за заказ. С вас " + response.data + " руб.");
+            $scope.moviesToShow = [];
+            $scope.price = response.data;
+            $scope.bought = true;
         }
 
         function failPrice(response) {
-            console.log(response);
+            console.log(response.data);
+        }
+
+
+        function removeMessage() {
+            $timeout(function () {
+                $scope.bought = null;
+            }, 4000);
         }
     }
 

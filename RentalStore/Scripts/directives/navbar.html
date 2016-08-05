@@ -20,9 +20,9 @@
             <ul class="nav navbar-nav navbar-right">
 
                 <li ui-sref-active="active" ui-sref="cart"><a href="cart"><i class="fa fa-shopping-cart fa-large"></i>  Корзина</a></li>
-                <li><a href="login"  ng-show="Username != 'null'"><i class="fa fa-sign-out"></i>   Выйти</a></li>
+                <li ui-sref-active="active" ng-click="reset()"><a href="login"  ng-show="Username != 'null'"><i class="fa fa-sign-out"></i>   Выйти</a></li>
                 <li ui-sref-active="active" ng-show="Username == 'null'" ui-sref="login"><a href="login">Вход</a></li>
-                <li ui-sref-active="active" ui-sref="register"><a href="register"><i class="fa fa-user-plus fa-large"></i>  Регистрация</a></li>
+                <li ui-sref-active="active"ng-click="reset()" ui-sref="register"><a href="register"><i class="fa fa-user-plus fa-large"></i>  Регистрация</a></li>
             </ul>
         </div>
     </div>

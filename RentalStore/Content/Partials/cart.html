@@ -1,5 +1,12 @@
 ﻿<div class="panel-body">
     <div class="row">
+        <div ng-show="bought" class="alert alert-success alert-dismissable">
+            Спасибо за заказ. С вас {{price}} руб.
+        </div>
+        <div ng-show="moviesToShow.length == 0" class="alert alert-info alert-dismissable">
+            <a class="panel-close close" data-dismiss="alert">×</a>
+            Ваша корзина пуста.
+        </div>
         <div class="list-group  col-sm-6 col-md-10" ng-repeat="movie in moviesToShow">
             <div class="media">
                 <div style="padding-top:5px" class="pull-left">
@@ -27,7 +34,7 @@
         </div>
 
         <div class="col-sm-6 col-md-10 form-group">
-                <button type="reset" class="btn btn-default">Отмена</button>
+                <button ng-click ="close()" type="reset" class="btn btn-default">Отмена</button>
                 <button ng-click="countPrice()" type="submit" class="btn btn-primary">Оформить заказ</button>
         </div>
     </div>

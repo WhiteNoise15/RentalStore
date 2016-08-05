@@ -18,7 +18,9 @@
             $state.go('^');
         };
 
-        $scope.userId = localStorage.username.valueOf()
+        $scope.userId = localStorage.username.valueOf();
+        console.log($scope.userId);
+        $scope.userRole = localStorage.Role;
 
         $scope.addToCart = function () {
             apiService.post("api/cart/add", { Movie: $scope.movie, UserId: $scope.userId }, added, addedFail);
@@ -35,7 +37,7 @@
 
         function addedFail(response) {
             console.log(response.data);
-            alert("При добавлении фильма в корзину произошла ошибка");
+            alert(response.data);
         }
     }
 

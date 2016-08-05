@@ -69,6 +69,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="RentalStoreContext.cs" />
     <Compile Include="Configurations\BaseConfuguration.cs" />
     <Compile Include="Configurations\CartConfiguration.cs" />

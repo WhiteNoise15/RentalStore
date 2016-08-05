@@ -77,10 +77,10 @@
 
                 <div class="form-group">
                     <div class="row">
-                        <div class="col-xs-6">
+                        <div class="col-xs-4">
                             <label class="control-label">Дата выхода</label>
                             <p class="input-group">
-                                <input type="text" class="form-control" name="dateReleased" uib-datepicker-popup="{{format}}" ng-model="movie.ReleaseDate" is-open="datepicker.opened" datepicker-options="dateOptions" ng-required="true" datepicker-popup="dd-MMMM-yyyy" datepicker-append-to-body="true" close-text="Закрыть" current-text="Сегодня" clear-text="Отчистить" date-type="string"
+                                <input type="text" class="form-control" name="dateReleased" uib-datepicker-popup="{{format}}" ng-model="movie.ReleaseDate" is-open="datepicker.opened" datepicker-options="dateOptions" ng-required="true" datepicker-popup="dd-MMMM-yyyy" datepicker-append-to-body="true" close-text="Закрыть" current-text="Сегодня" clear-text="Отчистить"
                                        validate-on="blur" required required-message="'Необходимо указать дату релиза'" />
                                 <span class="input-group-btn">
                                     <button type="button" class="btn btn-default" ng-click="openDatePicker($event)"><i class="glyphicon glyphicon-calendar"></i></button>
@@ -88,11 +88,17 @@
                             </p>
                         </div>
 
-                        <div class="col-xs-6">
+                        <div class="col-xs-4">
                             <label class="control-label">Ссылка на трейлер c Youtube</label>
                             <input class="form-control" type="text" ng-model="movie.TrailerURL" name="trailerURI"
                                    validate-on="blur" required required-message="'Укажите ссылку на трейлер'" ng-pattern="/^(https?\:\/\/)?(www\.youtube\.com|youtu\.?be)\/.+$/"
                                    invalid-message="'Вы ввели неправильную ссылку'">
+                        </div>
+
+                        <div class="col-xs-4">
+                            <label class="control-label">Цена</label>
+                            <input class="form-control text-center" type="number" min="1" ng-model="movie.Price" name="producer"
+                                   validate-on="blur" required required-message="'Пожалуйста, укажите цену'">
                         </div>
                     </div>
                 </div>

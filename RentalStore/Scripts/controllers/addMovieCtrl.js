@@ -2,9 +2,9 @@
     "use strict";
     app.controller("addMovieCtrl", addMovieCtrl);
 
-    addMovieCtrl.$inject = ["$scope", "apiService", "$window", "$timeout"];
+    addMovieCtrl.$inject = ["$scope", "apiService", "$window", "$timeout", "$location"];
 
-    function addMovieCtrl($scope, apiService, $window, $timeout) {
+    function addMovieCtrl($scope, apiService, $window, $timeout, $location) {
 
         var initialImage = "../../Content/images/movies/unknown.jpg";
         var urlRegex = /^https?:\/\/(?:[a-z\-]+\.)+[a-z]{2,6}(?:\/[^\/#?]+)+\.(?:jpe?g|gif|png)$/;
