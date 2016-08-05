@@ -68,13 +68,13 @@ namespace RentalStore.Context.Migrations
         private Genre[] GenerateGenres()
         {
             Genre[] genres = new Genre[] {
-                new Genre() { Name = "Комедия" },
-                new Genre() { Name = "Фантастика" },
-                new Genre() { Name = "Драма" },
-                new Genre() { Name = "Боевик" },
-                new Genre() { Name = "Триллер" },
-                new Genre() { Name = "Мультфильм" },
-                new Genre() { Name = "Мелодрама" },
+               new Genre() { Name = "Drama" },
+                new Genre() { Name = "Western" },
+                new Genre() { Name = "Action" },
+                new Genre() { Name = "Horror" },
+                new Genre() { Name = "Romance" },
+                new Genre() { Name = "Comedy" },
+                new Genre() { Name = "Crime" },
             };
 
             return genres;
