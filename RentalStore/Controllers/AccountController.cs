@@ -16,6 +16,14 @@ namespace RentalStore.Controllers
     [RoutePrefix("api/account")]
     public class AccountController : ApiController
     {
+       
+        private readonly RentalStoreContext _rentalStoreContext;
+
+        public AccountController()
+        {
+            _rentalStoreContext = new RentalStoreContext();
+        }
+
         private string EncryptPassword(string password)
         {
             string EncryptionKey = "MAKV2SPBNI99212";
@@ -36,14 +44,6 @@ namespace RentalStore.Controllers
                 }
             }
             return password;
-        }
-
-
-        private readonly RentalStoreContext _rentalStoreContext;
-
-        public AccountController()
-        {
-            _rentalStoreContext = new RentalStoreContext();
         }
 
         [HttpPost]

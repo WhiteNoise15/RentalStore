@@ -21,7 +21,7 @@ namespace RentalStore.Controllers
 
         [HttpGet]
         [Route("roles")]
-        public ICollection<Role> Get()
+        public ICollection<Role> GetAll()
         {
             return _rentalStoreConext.Roles.ToList();
         }

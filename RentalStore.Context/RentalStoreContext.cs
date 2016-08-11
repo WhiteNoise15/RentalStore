@@ -14,7 +14,7 @@ namespace RentalStore.Context
         public RentalStoreContext()
             :base("Data Source=Ян-Пк;Initial Catalog=RentalStore;Integrated Security=True")
         {
-            Database.SetInitializer<RentalStoreContext>(null);
+            Database.SetInitializer<RentalStoreContext>(new DropCreateDatabaseIfModelChanges<RentalStoreContext>());
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -26,10 +26,10 @@ namespace RentalStore.Context
             modelBuilder.Configurations.Add(new GenreConfiguration());
         }
 
-        public IDbSet<Movie> Movies { get; set; }
-        public IDbSet<Genre> Genres { get; set; }
-        public IDbSet<User> Users { get; set; }
-        public IDbSet<Role> Roles { get; set; }
-        public IDbSet<Cart> Carts { get; set; }
+        public DbSet<Movie> Movies { get; set; }
+        public DbSet<Genre> Genres { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<Cart> Carts { get; set; }
     }
 }

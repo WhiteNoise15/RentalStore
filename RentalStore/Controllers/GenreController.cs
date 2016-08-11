@@ -22,7 +22,7 @@ namespace RentalStore.Controllers
 
         [HttpGet]
         [Route("genres")]
-        public ICollection<Genre> Get()
+        public ICollection<Genre> GetAll()
         {
             return _rentalStoreConext.Genres.ToList();
         }

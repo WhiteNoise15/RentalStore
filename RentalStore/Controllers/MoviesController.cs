@@ -23,7 +23,7 @@ namespace RentalStore.Controllers
 
         [HttpGet]
         [Route("details/{id:int}")]
-        public HttpResponseMessage Get(int id)
+        public HttpResponseMessage GetSingle(int id)
         {
             HttpResponseMessage response = null;
             Movie movie = _rentalStoreContext.Movies.FirstOrDefault(m => m.Id == id);
@@ -52,9 +52,13 @@ namespace RentalStore.Controllers
         }
 
 
+        //currentPage = текущая страница в списке всех фильмов
+        //itemsPerPage = количество фильмов, отображенных на одной странице
+        //filter = строка поиска фильма
+
         [HttpGet]
         [Route("{currentPage:int=1}/{itemsPerPage=12}/{filter?}")]
-        public HttpResponseMessage Get(HttpRequestMessage request, int? currentPage, int? itemsPerPage, string filter = null)
+        public HttpResponseMessage GetMovies(HttpRequestMessage request, int? currentPage, int? itemsPerPage, string filter = null)
         {
             int page = currentPage.Value == 1 ? 0 : currentPage.Value - 1;
             int moviesPerPage = itemsPerPage.Value;
@@ -101,7 +105,7 @@ namespace RentalStore.Controllers
 
         [HttpPost]
         [Route("update")]
-        public HttpResponseMessage EditMovie(Movie movie)
+        public HttpResponseMessage Edit(Movie movie)
         {
             HttpResponseMessage response = null;
             if (movie == null)

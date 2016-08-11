@@ -69,7 +69,7 @@ namespace RentalStore.Controllers
 
         [HttpGet]
         [Route("all/{userId:int}")]
-        public HttpResponseMessage Get(int userId)
+        public HttpResponseMessage GetSingle(int userId)
         {
             HttpResponseMessage response = null;
             List<Movie> usersMovies = new List<Movie>();
@@ -104,7 +104,7 @@ namespace RentalStore.Controllers
 
         [HttpGet]
         [Route("{userId:int}/price")]
-        public HttpResponseMessage GetPrice(int userId)
+        public HttpResponseMessage CountPrice(int userId)
         {
             HttpResponseMessage response = null;
             List<Movie> usersMovies = new List<Movie>();

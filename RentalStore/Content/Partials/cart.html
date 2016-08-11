@@ -22,9 +22,9 @@
                     <br />
                     Продюсер: <strong>{{movie.Producer}}</strong>
                     <br />
-                    Описание: <span class="text-muted">{{description | limitTo: 150}}...</span>
+                    Описание: <span class="text-muted">{{movie.Description | limitTo: 150}}...</span>
                     <br />
-                    <a class="fancybox-media" ng-href="{{movie.TrailerURI}}">Трейлер <i class="fa fa-video-camera fa-fw"></i></a>
+                    <a class="fancybox-media" ng-href="{{movie.TrailerURL}}">Трейлер <i class="fa fa-video-camera fa-fw"></i></a>
                 </div>
                 <label class="label label-info">{{movie.Genre.Name}}</label>
                 <br />
