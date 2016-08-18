@@ -147,16 +147,16 @@ namespace RentalStore.Controllers
         }
         
 
-        [HttpPost]
-        [Route("{userId:int}/remove")]
-        public HttpResponseMessage Remove(Movie movie)
+        [HttpDelete]
+        [Route("{userId:int}/remove/{movieId:int}")]
+        public HttpResponseMessage Remove(int movieId)
         {
             HttpResponseMessage response = null;
 
             try
             {
-                Cart cartToDelete = _rentalStoreConext.Carts.First(c => c.Movie.Id == movie.Id);
-                Movie movieToChange = _rentalStoreConext.Movies.First(c => c.Id == movie.Id);
+                Cart cartToDelete = _rentalStoreConext.Carts.First(c => c.Movie.Id == movieId);
+                Movie movieToChange = _rentalStoreConext.Movies.First(c => c.Id == movieId);
                 movieToChange.Count += 1;
 
                 _rentalStoreConext.Carts.Remove(cartToDelete);

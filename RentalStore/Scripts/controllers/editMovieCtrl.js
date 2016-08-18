@@ -53,7 +53,7 @@
         }
 
         $scope.editMovie = function () {
-            apiService.post('api/movies/update', $scope.movie, movieEdited, movieEditFail);
+            apiService.put('api/movies/update', $scope.movie, movieEdited, movieEditFail);
         }
 
         function movieEdited(response) {

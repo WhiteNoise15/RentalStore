@@ -23,7 +23,7 @@
         }
 
         $scope.remove = function (movie) {
-            apiService.post("api/cart/" + $scope.userId + "/remove", movie, removed, removeFail);
+            apiService.del("api/cart/" + $scope.userId + "/remove/" + movie.Id, removed, removeFail);
             var index = $scope.moviesToShow.indexOf(movie);
             $scope.moviesToShow.splice(index, 1);
             

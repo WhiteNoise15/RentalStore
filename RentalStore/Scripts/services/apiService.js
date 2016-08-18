@@ -7,7 +7,9 @@
 	 function apiService($http, $location, $rootScope) {
 	 	var service  = {
 	 		get: get,
-	 		post: post
+	 		post: post,
+	 		put: put,
+            del: del
 	 	};
 
 	 	function get(url, config, success, failure) {
@@ -40,6 +42,39 @@
 	 	    });
 	 		
 	 	}
+
+	 	function put(url, data, success, failure) {
+	 	    return $http.put(url, data).then(function (result) {
+	 	        success(result);
+	 	    }, function (error) {
+	 	        if (error.status === "401") {
+	 	            console.log("Вы не авторизованы");
+	 	            $rootScope.previousState = $location.path();
+	 	            $location.path('/login');
+	 	        }
+	 	        else if (failure != null) {
+	 	            failure(error);
+	 	        }
+	 	    });
+
+	 	}
+
+
+	 	function del(url, config, success, failure) {
+	 	    return $http.delete(url, config).then(function (result) {
+	 	        success(result);
+	 	    }, function (error) {
+	 	        if (error.status === "401") {
+	 	            console.log("Вы не авторизованы");
+	 	            $rootScope.previousState = $location.path();
+	 	            $location.path('/login');
+	 	        }
+	 	        else if (failure !== null) {
+	 	            failure(error);
+	 	        }
+	 	    });
+	 	}
+
 
 	 	return service;
 	 }

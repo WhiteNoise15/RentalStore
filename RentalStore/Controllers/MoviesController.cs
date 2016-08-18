@@ -103,7 +103,7 @@ namespace RentalStore.Controllers
             return response;
         }
 
-        [HttpPost]
+        [HttpPut]
         [Route("update")]
         public HttpResponseMessage Edit(Movie movie)
         {
