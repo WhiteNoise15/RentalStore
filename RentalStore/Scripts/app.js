@@ -1,7 +1,7 @@
 ﻿(function () {
     "use strict";
 
-    var app = angular.module("rentalStore", ['ui.router', 'ui.bootstrap', 'ui.router.modal', "angularValidator", "ngCookies", "LocalStorageModule"]);
+    var app = angular.module("rentalStore", ['ui.router', 'ui.bootstrap', 'ui.router.modal', "angularValidator", "ngCookies", "LocalStorageModule", "angular-loading-bar"]);
 
     app.config(configFunction);
     app.run(run);

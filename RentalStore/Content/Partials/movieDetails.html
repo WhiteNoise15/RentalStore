@@ -14,6 +14,7 @@
                         Режиссер: <label>{{movie.Director}}</label><br />
                         Сценарист: <label>{{movie.Writer}}</label><br />
                         Продюсер: <label>{{movie.Producer}}</label><br />
+                        Цена: <label>{{movie.Price || 0}} руб. </label><br />
                         Описание: <span class="text-muted">{{movie.Description | limitTo: 150}}...</span>
                         <br />
                         <label class="label label-info">{{movie.Genre.Name}}</label>

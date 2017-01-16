@@ -14,6 +14,7 @@ namespace RentalStore.App_Start
                 "~/Scripts/vendors/jquery-1.10.2.min.js",
                 "~/Scripts/vendors/bootstrap.min.js",
                 "~/Scripts/vendors/angular/angular.min.js",
+                "~/Scripts/vendors/angular-loading-bar/build/loading-bar.min.js",
                 "~/Scripts/vendors/angular-ui-router.min.js",
                 "~/Scripts/vendors/ui-bootstrap-tpls-2.0.0.min.js",
                 "~/Scripts/vendors/angular-ui-router-uib-modal/angular-ui-router-uib-modal.js",
@@ -42,7 +43,8 @@ namespace RentalStore.App_Start
                 "~/Content/css/bootstrap.min.css",
                 "~/Content/css/style.css",
                 "~/Content/css/font-awesome.min.css",
-                "~/Content/fonts/fontawesome-webfont.woff"
+                "~/Content/fonts/fontawesome-webfont.woff",
+                "~/Content/css/loading-bar.min.css"
             ));
         }
     }

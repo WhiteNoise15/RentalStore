@@ -62,6 +62,61 @@ namespace RentalStore.Context.Migrations
                 }
             });
 
+
+            context.Genres.AddOrUpdate(g => g.Name, new Genre[]
+            {
+                new Genre() { Name = "Drama" },
+                new Genre() { Name = "Action" },
+                new Genre() { Name = "Horror" },
+                new Genre() { Name = "Romance" },
+                new Genre() { Name = "Comedy" },
+                new Genre() { Name = "Triller" },
+            });
+
+            context.Movies.AddOrUpdate(g => g.Title, new Movie[]
+           {
+                 new Movie()
+                 {   Title="Drive",
+                     Image ="http://allreport.ru/wp-content/uploads/2011/10/drive-550x340.jpg",
+                     GenreId = 1,
+                     Director ="Nicolas Winding Refn",
+                     Writer="James Sallis",
+                     Producer="Michel Litvak",
+                     ReleaseDate = "03.11.11",
+                     Count=1,
+                     Description = "A mysterious Hollywood stuntman and mechanic moonlights as a getaway driver and finds himself trouble when he helps out his neighbor.",
+                     TrailerURL = "https://www.youtube.com/watch?v=CWX34ShfcsE"
+                },
+
+                 new Movie()
+                 {   Title="Mulholland Drive",
+                     Image ="http://www.lemouv.fr/sites/default/files/2014/05/13/147640/mulholland%20drive.jpg",
+                     GenreId = 1,
+                     Director ="David Lynch",
+                     Writer="David Lynch",
+                     Producer="Neal Edelstein",
+                     ReleaseDate = "14.03.02",
+                     Count=1,
+                     Description = "After a car wreck on the winding Mulholland Drive renders a woman amnesiac, she and a perky Hollywood-hopeful search for clues and answers across Los Angeles in a twisting venture beyond dreams and reality.",
+                     TrailerURL = "https://www.youtube.com/watch?v=XQ5Q0CHQ0EU"
+                },
+
+                  new Movie()
+                  {   Title="A Clockwork Orange",
+                      Image ="https://resizing.flixster.com/wGgg03wtPQkhY3UWDyLX101Ofzk=/206x305/v1.bTsxMTE2ODAyNjtqOzE3Mjc0OzEyMDA7ODAwOzEyMDA",
+                      GenreId = 1,
+                      Director ="Stanley Kubrick",
+                      Writer="Stanley Kubrick",
+                      Producer="Stanley Kubrick",
+                      ReleaseDate = "13.01.72",
+                      Count=1,
+                      Description = "In future Britain, Alex DeLarge, a charismatic and psycopath delinquent, who likes to practice crimes and ultra-violence with his gang, is jailed and volunteers for an experimental aversion therapy developed by the government in an effort to solve society's crime problem - but not all goes according to plan.",
+                      TrailerURL = "https://www.youtube.com/watch?v=SPRzm8ibDQ8"
+                },
+
+
+           });
+
         }
 
 
@@ -79,6 +134,6 @@ namespace RentalStore.Context.Migrations
 
             return genres;
         }
-   
+
     }
 }
