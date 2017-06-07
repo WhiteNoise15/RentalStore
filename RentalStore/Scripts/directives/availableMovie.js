@@ -1,4 +1,5 @@
 ﻿(function (app) {
+    "use strict";
     app.directive("availableMovie", availableMovie);
 
     function availableMovie() {

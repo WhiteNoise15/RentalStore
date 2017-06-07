@@ -1,11 +1,12 @@
-(function(app) {
+(function (app) {
+    "use strict";
 	 
 	 app.factory('apiService', apiService);
 	 
 	 apiService.$inject = ['$http', '$location', '$rootScope'];
 
 	 function apiService($http, $location, $rootScope) {
-	 	var service  = {
+	 	const service  = {
 	 		get: get,
 	 		post: post,
 	 		put: put,
@@ -56,9 +57,7 @@
 	 	            failure(error);
 	 	        }
 	 	    });
-
 	 	}
-
 
 	 	function del(url, config, success, failure) {
 	 	    return $http.delete(url, config).then(function (result) {
@@ -74,7 +73,6 @@
 	 	        }
 	 	    });
 	 	}
-
 
 	 	return service;
 	 }

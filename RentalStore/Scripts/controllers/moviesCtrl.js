@@ -10,9 +10,8 @@
         $scope.moviesToShow = [];
         $scope.currentPage = 1;
         
-
         $scope.getData = function() {
-            var config = {
+            const config = {
                 params: {
                     currentPage: $scope.currentPage,
                     itemsPerPage: $scope.itemsPerPage,
@@ -33,11 +32,8 @@
 
         function moviesLoaded(result) {
             $scope.moviesToShow = result.data.moviesToShow;
-            console.log($scope.moviesToShow);
-
             $scope.totalItems = result.data.totalItems;
-            var hasMovies = $scope.moviesToShow.length > 0 || $scope.totalItems > 0;
-
+            const hasMovies = $scope.moviesToShow.length > 0 || $scope.totalItems > 0;
 
             if (!hasMovies)
                 $scope.message = "Фильмов не найдено";
@@ -56,7 +52,6 @@
         }
         
         $scope.getData();
-
     }
 
 })(angular.module("rentalStore"));

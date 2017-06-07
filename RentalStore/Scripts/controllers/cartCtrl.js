@@ -6,16 +6,14 @@
 
     function cartCtrl($scope, apiService, $window, $location) {
         $scope.userId = localStorage.username.valueOf();
-        console.log($scope.userId);
-        apiService.get("api/cart/all/" + $scope.userId, null, succesLoad, failLoad);
+        apiService.get(`api/cart/all/${$scope.userId}`, null, succesLoad, failLoad);
 
         $scope.close = function () {
             $location.path("/movies");
         }
 
-        function succesLoad(response) {
-            $scope.moviesToShow = response.data;
-            console.log(response);
+        function succesLoad({ data }) {
+            $scope.moviesToShow = data;
         }
 
         function failLoad(response) {
@@ -24,33 +22,33 @@
 
         $scope.remove = function (movie) {
             apiService.del("api/cart/" + $scope.userId + "/remove/" + movie.Id, removed, removeFail);
-            var index = $scope.moviesToShow.indexOf(movie);
+            let index = $scope.moviesToShow.indexOf(movie);
             $scope.moviesToShow.splice(index, 1);
-            
+
         }
 
         function removed(response) {
             console.log(response);
         }
 
-        function removeFail(response) {
-            alert(response.data);
+        function removeFail({ data }) {
+            console.log(data);
         }
 
 
         $scope.countPrice = function () {
-            apiService.get("api/cart/" + $scope.userId + "/price", null, successPrice, failPrice);
+            apiService.get(`api/cart/${$scope.userId}/price`, null, successPrice, failPrice);
         }
 
 
-        function successPrice(response) {
+        function successPrice({ data }) {
             $scope.moviesToShow = [];
-            $scope.price = response.data;
+            $scope.price = data;
             $scope.bought = true;
         }
 
-        function failPrice(response) {
-            console.log(response.data);
+        function failPrice({ data }) {
+            console.log(data);
         }
 
 

@@ -9,12 +9,11 @@
         $scope.latestMovies = [];
 
         localStorageService.clearAll();
-        console.log(localStorage);
 
         apiService.get("api/movies/latest", null, moviesLoaded, moviesLoadFailed);
 
-        function moviesLoaded(response) {
-            $scope.latestMovies = response.data;
+        function moviesLoaded({data}) {
+            $scope.latestMovies = data;
             if ($scope.latestMovies.length == 0) {
                 $scope.message = "База фильмов пуста"
             }
