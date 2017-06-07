@@ -5,7 +5,7 @@
 
     authService.$inject = ['$http', '$cookieStore', '$rootScope', '$timeout', 'apiService'];
     function authService($http, $cookieStore, $rootScope, $timeout, apiService) {
-        var service = {};
+        const service = {};
 
         service.login = login;
         service.setCredentials = setCredentials;
@@ -14,13 +14,11 @@
         return service;
 
         function login(user, success, fail) {
-
             apiService.post('api/account/login', user, success, fail);
-
         }
 
         function setCredentials(username, password, email) {
-            var authdata = Base64.encode(username + ':' + password);
+            let authdata = Base64.encode(username + ':' + password);
 
             $rootScope.globals = {
                 currentUser: {
@@ -45,15 +43,15 @@
     }
 
     // Base64 encoding service used by AuthenticationService
-    var Base64 = {
+    const Base64 = {
 
         keyStr: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=',
 
         encode: function (input) {
-            var output = "";
-            var chr1, chr2, chr3 = "";
-            var enc1, enc2, enc3, enc4 = "";
-            var i = 0;
+            let output = "";
+            let chr1, chr2, chr3 = "";
+            let enc1, enc2, enc3, enc4 = "";
+            let i = 0;
 
             do {
                 chr1 = input.charCodeAt(i++);
@@ -84,13 +82,13 @@
         },
 
         decode: function (input) {
-            var output = "";
-            var chr1, chr2, chr3 = "";
-            var enc1, enc2, enc3, enc4 = "";
-            var i = 0;
+            let output = "";
+            let chr1, chr2, chr3 = "";
+            let enc1, enc2, enc3, enc4 = "";
+            let i = 0;
 
             // remove all characters that are not A-Z, a-z, 0-9, +, /, or =
-            var base64test = /[^A-Za-z0-9\+\/\=]/g;
+            let base64test = /[^A-Za-z0-9\+\/\=]/g;
             if (base64test.exec(input)) {
                 window.alert("There were invalid base64 characters in the input text.\n" +
                     "Valid base64 characters are A-Z, a-z, 0-9, '+', '/',and '='\n" +

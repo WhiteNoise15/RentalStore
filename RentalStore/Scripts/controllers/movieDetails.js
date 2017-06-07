@@ -5,7 +5,7 @@
 
     function movieDetailsCtrl($scope, $uibModalInstance, $uibModal, $stateParams, apiService, $state) {
 
-        apiService.get("api/movies/details/" + $stateParams.movieId, null, detailsLoaded, detailsLoadFail);
+        apiService.get(`api/movies/details/${$stateParams.movieId}`, null, detailsLoaded, detailsLoadFail);
         
         function detailsLoaded(result) {
             $scope.movie = result.data;

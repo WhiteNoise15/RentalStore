@@ -10,11 +10,9 @@
             replace: 'true',
             templateUrl: '/Scripts/directives/navbar.html',
             link: function ($scope, $element, $attrs) {
-                $scope.Username = localStorage.Username;
-                $scope.Role = localStorage.Role;
-                console.log($scope.Username);
+                $scope.Username = { localStorage };
+                $scope.Role = { localStorage };
                 $scope.reset = function () {
-                    console.log("sds");
                     $state.reload();
                 }
             }

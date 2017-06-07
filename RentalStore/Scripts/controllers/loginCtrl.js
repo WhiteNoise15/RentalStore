@@ -15,13 +15,13 @@
         })();
 
         function login() {
-            authService.login($scope.user, function (response) {
+            authService.login($scope.user, function ({data}) {
                 authService.setCredentials($scope.Username, $scope.Password, $scope.Email);
-                localStorage.Username = response.data.Username;
-                localStorage.username = response.data.Id;
-                localStorage.Role = response.data.Role.Name;
+                localStorage.Username = data.Username;
+                localStorage.username = data.Id;
+                localStorage.Role = data.Role.Name;
                     $window.location.href = "/";
-            }, function (response) {
+            }, function () {
             });
         };
     }

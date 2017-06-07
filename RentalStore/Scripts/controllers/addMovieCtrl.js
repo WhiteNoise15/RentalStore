@@ -6,8 +6,8 @@
 
     function addMovieCtrl($scope, apiService, $window, $timeout, $location) {
 
-        var initialImage = "../../Content/images/movies/unknown.jpg";
-        var urlRegex = /^https?:\/\/(?:[a-z\-]+\.)+[a-z]{2,6}(?:\/[^\/#?]+)+\.(?:jpe?g|gif|png)$/;
+        const initialImage = "../../Content/images/movies/unknown.jpg";
+        const urlRegex = /^https?:\/\/(?:[a-z\-]+\.)+[a-z]{2,6}(?:\/[^\/#?]+)+\.(?:jpe?g|gif|png)$/;
 
         $scope.genres = [];
         $scope.movie = {
@@ -72,11 +72,6 @@
         function errorfull(result) {
             console.log("Не удалось загрузить список жанров");
         }
-
-
-
     }
-
-  
 
 })(angular.module("rentalStore"));

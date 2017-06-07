@@ -7,9 +7,7 @@
         $scope.user = {};
         $scope.user.Role = null;
 
-
         $scope.register = function () {
-            console.log($scope.user);
             apiService.post("api/account/register", $scope.user, registred, notRegistred);
         }
 
@@ -30,8 +28,6 @@
                 $location.path('/login');
             }, 3000);
         }
-
     }
-
 
 })(angular.module("rentalStore"));

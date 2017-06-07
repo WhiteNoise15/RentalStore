@@ -8,8 +8,8 @@
         apiService.get("api/genres", null, loadGenres, loadGenresFailed)
         apiService.get("api/movies/details/" + $stateParams.movieId, null, movieLoaded, movieLoadedFail);
 
-        var initialImage;
-        var urlRegex = /^https?:\/\/(?:[a-z\-]+\.)+[a-z]{2,6}(?:\/[^\/#?]+)+\.(?:jpe?g|gif|png)$/;
+        let initialImage;
+        const urlRegex = /^https?:\/\/(?:[a-z\-]+\.)+[a-z]{2,6}(?:\/[^\/#?]+)+\.(?:jpe?g|gif|png)$/;
         $scope.Image = "";
 
         function checkImage() {
@@ -23,14 +23,13 @@
 
         $scope.$watch("Image", checkImage);
 
-        function movieLoaded(result) {
-            console.log(result.data);
-            $scope.movie = result.data;
+        function movieLoaded({ data }) {
+            $scope.movie = data;
             initialImage = $scope.movie.Image;
         }
 
-        function movieLoadedFail(result) {
-            alert("Ошибка при загрузкке фильма");
+        function movieLoadedFail() {
+            console.log("Ошибка при загрузкке фильма");
             $location.url("movies");
         }
 
@@ -39,7 +38,7 @@
         }
 
         function loadGenresFailed(result) {
-            alert("ошибка при загрузке жанров");
+            console.log("ошибка при загрузке жанров");
             $location.url("movies");
         }
 
@@ -56,14 +55,14 @@
             apiService.put('api/movies/update', $scope.movie, movieEdited, movieEditFail);
         }
 
-        function movieEdited(response) {
-            $scope.movie = response.data;
+        function movieEdited({ data }) {
+            $scope.movie = data;
             $scope.success = true;
             $window.scrollTo(0, 0);
             removeMessage();
         }
 
-        function movieEditFail(response) {
+        function movieEditFail() {
             $scope.success = false;
             removeMessage();
         }
@@ -73,10 +72,6 @@
                 $scope.success = null;
             }, 4000);
         }
-
-        
     }
-
-
 
 })(angular.module("rentalStore"));
